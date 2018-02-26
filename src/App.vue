@@ -63,7 +63,7 @@ export default {
     return {
       phone: '',
       countries,
-      countryISO: null,
+      countryISO: 'TW',
     }
   },
   computed: {
