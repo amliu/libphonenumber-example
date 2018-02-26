@@ -7,7 +7,7 @@
     </p>
 
     <p>
-      The "CHECK FORMAT RESULT" button will be enabled only when the phone number is valid. Otherwise, disabled.
+      The "FORMAT VALID" button will be enabled only when the phone number is valid. Otherwise, disabled.
     </p>
 
     <md-field>
@@ -37,7 +37,7 @@
       class="md-raised md-primary"
       :disabled="!phoneValid"
     >
-      CHECK FORMAT RESULT
+      FORMAT VALID
     </md-button>
 
     <section
