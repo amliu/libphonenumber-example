@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Taiwan",
+    "region_code": "TW"
+  },
+  {
+    "label": "United States",
+    "region_code": "US"
+  },
+  {
+    "label": "Japan",
+    "region_code": "JP"
+  },
+  {
+    "label": "China",
+    "region_code": "CN"
+  },
+  {
+    "label": "Australia",
+    "region_code": "AU"
+  },
+  {
+    "label": "Singapore",
+    "region_code": "SG"
+  }
+]

@@ -1,32 +1,61 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <h1>Phone validation example</h1>
+
+    <p>
+      Use JS lib ruimarinho/google-libphonenumber to validate phone numbers.
+    </p>
+
+    <p>
+      The "CHECK FORMAT RESULT" button will be enabled only when the phone number is valid. Otherwise, disabled.
+    </p>
+
+    <md-field>
+      <label for="countries">Country</label>
+      <md-select v-model="countryISO" name="countries" id="countries">
+        <md-option
+          v-for="c in countries"
+          :key="c.region_code"
+          :value="c.region_code"
+        >
+          {{ c.label }}
+        </md-option>
+      </md-select>
+    </md-field>
+
+    <md-field>
+      <label for="phone">Phone number</label>
+      <md-input
+        id="phone"
+        v-model.lazy="phone"
+        placeholder="Input mobile phone number"
+        type="tel"
+      />
+    </md-field>
+
+    <md-button
+      class="md-raised md-primary"
+      :disabled="!validFormat"
+    >
+      CHECK FORMAT RESULT
+    </md-button>
   </div>
 </template>
 
 <script>
+import countries from './region_code';
+import * as phoneValidator from './phoneValidator';
+
 export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      phone: '',
+      countries,
+      validFormat: false,
+      countryISO: null,
     }
-  }
+  },
 }
 </script>
 
@@ -37,24 +66,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 10% auto;
+  width: 100%;
+  max-width: 500px;
 }
 
-h1, h2 {
-  font-weight: normal;
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
