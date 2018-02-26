@@ -3,7 +3,11 @@
     <h1>Phone validation example</h1>
 
     <p>
-      Use JS lib ruimarinho/google-libphonenumber to validate phone numbers.
+      Use JS lib
+      <a href="https://github.com/ruimarinho/google-libphonenumber" target="_blank">
+        ruimarinho/google-libphonenumber
+      </a>
+      to validate international mobile numbers.
     </p>
 
     <p>
@@ -102,7 +106,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 10% auto;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
 }
 
