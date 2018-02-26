@@ -35,10 +35,21 @@
 
     <md-button
       class="md-raised md-primary"
-      :disabled="!validFormat"
+      :disabled="!phoneValid"
     >
       CHECK FORMAT RESULT
     </md-button>
+
+    <section
+      id="format-section"
+      v-if="phoneValid"
+    >
+      <h2>Phone number in different formats</h2>
+      <div>E164 : {{ formatE164 }}</div>
+      <div>INTERNATIONAL : {{ formatInternational }} </div>
+      <div>NATIONAL : {{ formatNational }} </div>
+      <div>RFC3966 : {{ formatRFC3966 }} </div>
+    </section>
   </div>
 </template>
 
@@ -52,9 +63,33 @@ export default {
     return {
       phone: '',
       countries,
-      validFormat: false,
       countryISO: null,
     }
+  },
+  computed: {
+    phoneValid: function () {
+      if (!this.phone.length) {
+        return false;
+      }
+      const numbers = phoneValidator.normalizedPhoneNumber(this.phone, this.countryISO);
+      return  phoneValidator.isPhoneNumberValid(numbers);
+    },
+
+    formatE164: function () {
+      return phoneValidator.formatE164(this.phone, this.countryISO);
+    },
+
+    formatInternational: function () {
+      return phoneValidator.formatInternational(this.phone, this.countryISO);
+    },
+
+    formatNational: function () {
+      return phoneValidator.formatNational(this.phone, this.countryISO);
+    },
+
+    formatRFC3966: function () {
+      return phoneValidator.formatRFC3966(this.phone, this.countryISO);
+    },
   },
 }
 </script>
@@ -69,6 +104,14 @@ export default {
   margin: 10% auto;
   width: 100%;
   max-width: 500px;
+}
+
+#format-section {
+  > div {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: cadetblue;
+  }
 }
 
 html, body {
