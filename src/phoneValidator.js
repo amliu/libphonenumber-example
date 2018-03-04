@@ -11,7 +11,10 @@ export const isPhoneNumberValid = (normalizedPhoneNumber) => {
   }
 
   const phoneObject = PhoneNumberUtil.parse(normalizedPhoneNumber);
-  return PhoneNumberUtil.getNumberType(phoneObject) === PhoneNumberType.MOBILE;
+
+  const type =  PhoneNumberUtil.getNumberType(phoneObject);
+
+  return type === PhoneNumberType.MOBILE || type === PhoneNumberType.FIXED_LINE_OR_MOBILE;
 };
 
 export const normalizedPhoneNumber = (phoneNumber, country) => {
