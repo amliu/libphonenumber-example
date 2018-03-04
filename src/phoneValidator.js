@@ -19,10 +19,11 @@ export const normalizedPhoneNumber = (phoneNumber, country) => {
     return phoneNumber;
   }
 
-  const phoneNumberStr = PhoneNumberUtil.parse(phoneNumber, country);
+  // PhoneNumberUtil.parse() returns an i18n.phonenumbers.PhoneNumber object
+  const phoneObject = PhoneNumberUtil.parse(phoneNumber, country);
 
   return PhoneNumberUtil
-    .format(phoneNumberStr, PhoneNumberFormat.INTERNATIONAL)
+    .format(phoneObject, PhoneNumberFormat.INTERNATIONAL)
 };
 
 export const formatE164 = (phoneNumber, country) =>
