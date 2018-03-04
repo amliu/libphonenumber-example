@@ -83,8 +83,7 @@ export default {
       if (!this.phone.length) {
         return false;
       }
-      const numbers = phoneValidator.normalizedPhoneNumber(this.phone, this.countryISO);
-      return  phoneValidator.isPhoneNumberValid(numbers);
+      return  phoneValidator.isPhoneNumberValid(this.phone, this.countryISO);
     },
 
     formatE164: function () {

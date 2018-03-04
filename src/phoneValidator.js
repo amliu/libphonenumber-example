@@ -5,28 +5,17 @@ const PhoneNumberType = LibPhoneNumber.PhoneNumberType;
 const PhoneNumberUtil = LibPhoneNumber.PhoneNumberUtil.getInstance();
 const MIN_SIZE = 3; // phone number length < 3 will have PhoneNumberUtil.parse() occur error
 
-export const isPhoneNumberValid = (normalizedPhoneNumber) => {
-  if (normalizedPhoneNumber.length < MIN_SIZE) {
+export const isPhoneNumberValid = (phoneNumberStr, country) => {
+  if (phoneNumberStr.length < MIN_SIZE) {
     return false;
   }
 
-  const phoneObject = PhoneNumberUtil.parse(normalizedPhoneNumber);
+  // PhoneNumberUtil.parse() returns an i18n.phonenumbers.PhoneNumber object
+  const phoneObject = PhoneNumberUtil.parse(phoneNumberStr, country);
 
   const type =  PhoneNumberUtil.getNumberType(phoneObject);
 
   return type === PhoneNumberType.MOBILE || type === PhoneNumberType.FIXED_LINE_OR_MOBILE;
-};
-
-export const normalizedPhoneNumber = (phoneNumber, country) => {
-  if (phoneNumber.length < MIN_SIZE){
-    return phoneNumber;
-  }
-
-  // PhoneNumberUtil.parse() returns an i18n.phonenumbers.PhoneNumber object
-  const phoneObject = PhoneNumberUtil.parse(phoneNumber, country);
-
-  return PhoneNumberUtil
-    .format(phoneObject, PhoneNumberFormat.INTERNATIONAL)
 };
 
 export const formatE164 = (phoneNumber, country) =>
