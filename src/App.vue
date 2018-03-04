@@ -3,7 +3,7 @@
     <h1>Phone validation example</h1>
 
     <div>
-      <a href="https://amliu.github.io/libphonenumber-example/">
+      <a href="https://amliu.github.io/libphonenumber-example/" target="_blank">
         <img :src="gitIcon" alt="Github icon" width="48">
       </a>
     </div>
