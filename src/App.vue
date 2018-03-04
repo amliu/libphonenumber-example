@@ -2,6 +2,12 @@
   <div id="app">
     <h1>Phone validation example</h1>
 
+    <div>
+      <a href="https://amliu.github.io/libphonenumber-example/">
+        <img :src="gitIcon" alt="Github icon" width="48">
+      </a>
+    </div>
+
     <p>
       Use JS lib
       <a href="https://github.com/ruimarinho/google-libphonenumber" target="_blank">
@@ -60,6 +66,7 @@
 <script>
 import countries from './region_code';
 import * as phoneValidator from './phoneValidator';
+import GitIcon from './assets/GitHub-Mark-64px.png';
 
 export default {
   name: 'app',
@@ -68,6 +75,7 @@ export default {
       phone: '',
       countries,
       countryISO: 'TW',
+      gitIcon: GitIcon,
     }
   },
   computed: {
