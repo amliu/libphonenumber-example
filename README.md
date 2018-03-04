@@ -1,5 +1,5 @@
 # libphonenumber-example
-![Imgur](https://i.imgur.com/iLNfjxM.gifv)
+![](https://i.imgur.com/iLNfjxM.gif)
 
 This is a simple demo app demonstrating how to use [ruimarinho/google-libphonenumber](https://github.com/ruimarinho/google-libphonenumber)
 to validate international mobile numbers.
